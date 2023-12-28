@@ -1,77 +1,54 @@
-# Analog
+# Analogjs, le meta-framework pour angular que l'on n'attendait plus. 
 
-The full-stack angular meta-framework
+![](./public/analog-logo.svg)
 
-## Wait wat?
+## Abstract
 
-What is a meta-framework ?
+```
+AnalogJS est un nouveau venu dans le monde des meta-frameworks.
 
-## Take your client-only libs
+Qu'est ce qu'un meta-framework déjà ? Chaque framework SPA en a un, React a Next.js ou Remix, Vue.JS a Nuxt, Svelte a sveltekit, Qwik a Qwik city
 
-- Angular
-- React
-- Vue
-- Svelte
-- Qwik
+Et maintenant Angular a AnalogJS. Qu'est ce qu'on peut faire avec ce genre de solutions ?
 
-## Put them on a server
+Du routage basé sur l'arborescence de répertoire et de fichiers, du rendu serveur dès la sortie de la boite, et plein d'autres fonctionnalités...
 
-- Angular + Analog
-- React + Next
-- Vue + Nuxt
-- Svelte + SvelteKit
-- Qwik + Qwik City
+Voyons ensemble comment tout ça fonctionne et pourquoi c'est super-ultra-méga-cool.
 
-## Joke
+```
 
-Y U NO NGXT ?
+## Plan
 
-## Advantages
+- Introduction ( définissons quelques termes... ) ( 10 minutes )
+  - SPA
+  - SSR
+  - SSG
+  - JamStack ?
+  - tout ca avec angular aujourd'hui était compliqué ( scully / angular/universal )
+- L'éco-systèmes des meta-frameworks et leurs features ( 10 minutes )
+  - Vue et Nuxt, React et Next, Svelte et SvelteKit etc...
+  - le File-based routing
+  - le pré rendu
+  - la gestion des tags meta
+  - markdown et front-matter
+  - les avantages et les inconvénients des meta-frameworks
+- Comment AnalogJS s'inspire de tout ça pour faire mieux ( 10 minutes )
+  - content based components
+  - toute la puissance du Router angular est toujours là
+  - Vite et Vitest
+  - markdown, marked et mermaid "out of the box"
+  - les schematics angular et les generators
+  - intégration avec des solutions de déploiement
+- Démo ( 10 minutes )
+  - generate app from scratch
+  - generate pages, component.md
+  - intégration
+- Conclusion ( 5 minutes )
+  - Cas d'usages ou AnalogJS est intéressant
+  - Quand ne pas l'utiliser
 
-Same code on the server and on the client
-Used to render the page.
+ 
 
-## Inconvenients
+## Sources
 
-
-## Meta-frameworks: the good parts
-
-
-## Meta-frameworks: the bad parts
-
-- file base routing kinda sucks -index.page.tsx everywhere
-- 
-
-## Let's define some terms
-
-- SSR - Server Side Rendering
-- SSG - Static Site Generation
-- Hydration
-- 
-
-
-
-# Features
-
-## Vite / Vitest / Playwright
-
-## File-based routing
-
-## Markdown as content routes
-
-## Hybrid SSR/SSG
-
-
-## Api routes / server
-
-
-
-# Demo
-
-
---
-
-style: bg color: #0a1429
-
-
-
+- [la doc officielle](https://analogjs.org/)
