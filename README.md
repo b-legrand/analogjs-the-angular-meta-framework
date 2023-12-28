@@ -1,6 +1,10 @@
 # Analogjs, le meta-framework pour angular que l'on n'attendait plus. 
 
+<div style="text-align: center">
 ![](./public/analog-logo.svg)
+</div>
+
+Les slides sont [déployés sur github-pages](https://b-legrand.github.io/analogjs-the-angular-meta-framework/).
 
 ## Abstract
 
