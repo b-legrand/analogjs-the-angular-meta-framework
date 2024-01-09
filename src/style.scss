@@ -12,22 +12,22 @@
 // ---------------------------------------------
 
 // Include theme-specific fonts
-@import url("https://fonts.bunny.net/css2?family=Poppins:wght@700&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.bunny.net/css2?family=Poppins:wght@300,700&family=Source+Sans+Pro&display=swap");
 
 // Override theme settings (see ../template/settings.scss)
 $backgroundColor: $crust;
 
-$mainColor: #fff;
-$headingColor: #fff;
+$mainColor: #bac2de;
+$headingColor: #cdd6f4;
 
 $mainFontSize: 42px;
-$mainFont: "Arial", Helvetica, sans-serif;
+$mainFont: "Poppins", Helvetica, sans-serif;
 $headingFont: "Poppins", Helvetica, sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
-$headingTextTransform: uppercase;
+$headingTextTransform: normal;
 $headingFontWeight: 600;
-$linkColor: #42affa;
+$linkColor: #89dceb;
 $linkColorHover: lighten($linkColor, 15%);
 $selectionBackgroundColor: lighten($linkColor, 25%);
 
@@ -47,3 +47,10 @@ iframe {
 }
 
 @import "@catppuccin/highlightjs/sass/catppuccin-mocha.scss";
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

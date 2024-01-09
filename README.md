@@ -43,16 +43,27 @@ Voyons ensemble comment tout ça fonctionne et pourquoi c'est super-ultra-méga-
   - markdown, marked et mermaid "out of the box"
   - les schematics angular et les generators
   - intégration avec des solutions de déploiement
-- Démo ( 10 minutes )
+- h3 / nitro ( 5 minutes )
+  - api routes
+  - get / post
+  - query / get params
+  - cas d'usage: sitemap, rss, bff
+- Démo ( 5 minutes )
   - generate app from scratch
   - generate pages, component.md
   - intégration
 - Conclusion ( 5 minutes )
   - Cas d'usages ou AnalogJS est intéressant
   - Quand ne pas l'utiliser
+  - Réfléchissez au cycle de vie de votre donnée
+    - mise en cache
+    - péremption
+    - tout n'est pas API
 
  
 
 ## Sources
 
 - [la doc officielle](https://analogjs.org/)
+- [la chaine youtube de Brandon Roberts](https://www.youtube.com/@BrandonRobertsDev)
+- [la doc de nitro](https://nitro.unjs.io/)
