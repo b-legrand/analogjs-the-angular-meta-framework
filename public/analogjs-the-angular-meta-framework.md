@@ -6,7 +6,7 @@ The full-stack Angular meta-framework
 
 ## Hi, my name is
 <div class="row">
-<img src="/assets/images/benjamin-legrand.png" style="border-radius: 100%;width: 40%" />
+<img src="assets/images/benjamin-legrand.png" style="border-radius: 100%;width: 40%" />
 
 - Benjamin Legrand <br> [@benjilegnard](https://twitter.com/benjilegnard)
 - Tech Lead ( onepoint )
@@ -17,7 +17,7 @@ The full-stack Angular meta-framework
 ## Analog.JS
 <div class="row">
 
-<img src="/assets/images/brandon-roberts.jpeg" style="border-radius: 100%;width: 40%; float:left;" />
+<img src="assets/images/brandon-roberts.jpeg" style="border-radius: 100%;width: 40%; float:left;" />
 
 - Brandon Roberts [@brandontroberts](https://twitter.com/brandontroberts)
 - NGRX contributor
@@ -54,14 +54,14 @@ démo peut-être
 - historiquement on a toujours fait ca
 
 
-<img src="/assets/ssr.drawio.svg" style="width: 100%" />
+<img src="assets/ssr.drawio.svg" style="width: 100%" />
 
 
 ### CSR
 - Client Side Rendering
 
 
-<img src="/assets/csr.drawio.svg" style="width: 80%" />
+<img src="assets/csr.drawio.svg" style="width: 80%" />
 ---
 - On distingue du SSR: c'est le browser qui fait la génération du HTML.
 
@@ -74,18 +74,18 @@ démo peut-être
 
 
 #### MPA
-<img src="/assets/spa-before.drawio.svg" style="width: 80%" />
+<img src="assets/spa-before.drawio.svg" style="width: 80%" />
 
 
 #### SPA
-<img src="/assets/spa-after.drawio.svg" style="width: 80%" />
+<img src="assets/spa-after.drawio.svg" style="width: 80%" />
 
 
 ### SSG
 - Static Site Generation
 
 
-<img src="/assets/ssg.drawio.svg" style="width: 80%" />
+<img src="assets/ssg.drawio.svg" style="width: 80%" />
 ---
 Conclusion:
 - Analog nous permets de faire tout ca, du rendu serveur, des spa angular, de la génération de sites statiques
