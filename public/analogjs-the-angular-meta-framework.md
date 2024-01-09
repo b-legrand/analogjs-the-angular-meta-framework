@@ -31,8 +31,9 @@ Contributeur ngrx
 ## Plan
 - c'est quoi un meta-framework ?
 - les features d'analogjs
-- démo ?
 - h3 / nitro
+---
+démo peut-être
 
 
 
@@ -66,14 +67,17 @@ Contributeur ngrx
 
 
 ### SPA
-- Single Page App
+- Single Page Application
 ---
 - Historiquement: client-side only
+- ne veut pas dire qu'on fait qu'une seule page
 
 
+#### MPA
 <img src="/assets/spa-before.drawio.svg" style="width: 80%" />
 
 
+#### SPA
 <img src="/assets/spa-after.drawio.svg" style="width: 80%" />
 
 
@@ -82,10 +86,16 @@ Contributeur ngrx
 
 
 <img src="/assets/ssg.drawio.svg" style="width: 80%" />
+---
+Conclusion:
+- Analog nous permets de faire tout ca, du rendu serveur, des spa angular, de la génération de sites statiques
 
 
 
-## Meta-frameworks?
+## Meta-framework ?
+
+
+### Qu'est ce que c'est ?
 
 
 #### Take your client-only libs
@@ -109,10 +119,11 @@ Contributeur ngrx
 Y U NO NGXT ?
 
 
-### features
+### Add some features
 - accès à requête / réponse
-- routage "universel"
-- apis
+- routage "universel"<!-- .element: class="fragment" -->
+- file-based routing<!-- .element: class="fragment" -->
+- routes d'api<!-- .element: class="fragment" -->
 
 
 ### Avantages / Inconvénients
@@ -120,17 +131,45 @@ Y U NO NGXT ?
 
 #### Meta-frameworks:<br/> the good parts
 
-- Same code on the server and on the client
-- Same code used to render the full page.
-- and partials
+- Même code / composants <br/> entre serveur et client<!-- .element: class="fragment" -->
+- Navigations full page et SPA.<!-- .element: class="fragment" -->
+- Bénéfices du CSR et du SSR<!-- .element: class="fragment" -->
+---
+- surtout important on évite le contexte switch
+- on évite d'avoir du rendu fait serveur différent de coté client
 
 
 #### Meta-frameworks:<br/> the bad parts
 
 - file-based routing can be hard:
+```bash
+.
+├── checkout
+│   ├── basket
+│   │   └── page.tsx
+│   ├── cart
+│   │   └── page.tsx
+│   └── summary
+│       └── page.tsx
+├── home
+│   └── page.tsx
+└── products
+    ├── [id]
+    │   └── page.tsx
+    └── page.tsx
+```
+---
 - index.page.tsx everywhere
-- abstractions
-- vendor-locking
+
+
+#### Meta-frameworks:<br/> the bad parts
+
+- abstractions<!-- .element: class="fragment" -->
+- vendor-locking<!-- .element: class="fragment" -->
+---
+- abstractions bizarres
+- use client / use server
+- code spécifiques a la solution
 
 
 
@@ -156,8 +195,98 @@ Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisab
 
 ### File-based routing
 
+```
+.
+├── checkout
+│   ├── basket.page.ts
+│   ├── cart.page.ts
+│   └── summary.page.ts
+├── home.page.ts
+├── (layout).page.ts
+└── products
+    ├── [id].page.ts
+    └── (list).page.tsx
+```
+
 
 #### Example
+
+
+
+#### Dynamic routes from folder tree
+
+
+#### Path params
+
+- \[myParam\].page.ts
+
+
+#### Ghost page /
+
+- `path.page.ts`: /path
+- `path/index.page.ts` : /path
+- `path/(path).page.ts` : /path
+---
+- les deux sont équivalents 
+
+
+#### Page component type
+- export default
+`home.page.ts`
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  standalone: true,
+  template: ` <h2>Welcome</h2> `,
+})
+export default class HomePage {}
+```
+
+
+#### Page metadata
+```ts
+export const meta: RouteMeta = {
+  // canActivate, canMatch, guard, resolvers, providers etc...
+}
+
+@Component({/** */})
+export default class PathPage {}
+```
+
+
+### Markdown as content routes
+
+`src/content/*`
+```bash
+src
+├── app 
+├── content
+│   ├── mon-contenu.md
+│   └── en-format-markdown.md
+└── pages
+```
+
+
+#### Front-matter
+
+```markdown
+---
+publishedDate: '2024-01-09'
+slug: mon-super-article
+meta:
+  tags:
+    - yaml
+---
+
+## titre
+```
+
+
+#### Mermaid support
+
+#### Example
+
 ```mermaid
 flowchart TD
     A[Shell] --> B(Page A)
@@ -167,23 +296,17 @@ flowchart TD
     C --> F[fa:fa-car Car]
 ```
 
-
-### Markdown as content routes
-```typescript
-import { Component } from '@angular/core';
-
-@Component({
-  standalone: true,
-  template: ` <h2>Welcome</h2> `,
-})
-export default class HomePageComponent {}
-```
+#### 
 
 
 ### Hybrid SSR/SSG
 
+// TODO
+
 
 ### Api routes / server
+---
+de la même manière que pour 
 
 
 #### h3 / nitro
