@@ -120,7 +120,7 @@ Y U NO NGXT ?
 
 
 ### Add some features
-- accès à requête / réponse
+- accès à requête / réponse HTTP<!-- .element: class="fragment" -->
 - routage "universel"<!-- .element: class="fragment" -->
 - file-based routing<!-- .element: class="fragment" -->
 - routes d'api<!-- .element: class="fragment" -->
@@ -129,7 +129,7 @@ Y U NO NGXT ?
 ### Avantages / Inconvénients
 
 
-#### Meta-frameworks:<br/> the good parts
+### Meta-frameworks:<br/> the good parts
 
 - Même code / composants <br/> entre serveur et client<!-- .element: class="fragment" -->
 - Navigations full page et SPA.<!-- .element: class="fragment" -->
@@ -139,9 +139,9 @@ Y U NO NGXT ?
 - on évite d'avoir du rendu fait serveur différent de coté client
 
 
-#### Meta-frameworks:<br/> the bad parts
+### Meta-frameworks:<br/> the bad parts
 
-- file-based routing can be hard:
+- file-based routing :
 ```bash
 .
 ├── checkout
@@ -160,6 +160,7 @@ Y U NO NGXT ?
 ```
 ---
 - index.page.tsx everywhere
+- "une des critiques"
 
 
 #### Meta-frameworks:<br/> the bad parts
@@ -170,34 +171,80 @@ Y U NO NGXT ?
 - abstractions bizarres
 - use client / use server
 - code spécifiques a la solution
-
+- analogjs ne résouds pas forcément ca, car il fournit des abstractions.
 
 
 ## AnalogJS Features
 
 
-### Vite / Vitest / Playwright
-- analogjs is a vite plugin
-- everything is a vite plugin
-- nx libs integration
-- e2e with playwright
+### Vite / Vitest
+- AnalogJS is a vite plugin<!-- .element: class="fragment" -->
+- Everything is a vite plugin<!-- .element: class="fragment" -->
+- NX libs integration<!-- .element: class="fragment" -->
+- e2e testing with Playwright<!-- .element: class="fragment" -->
 ---
-Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisable un peu partout.
+- Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisable un peu partout.
 - utilise esbuild et rollup en dessous
+- quelques autres intégrations
 
 
 `vite.config.ts`
 ```ts
-// todo vite config
+import { defineConfig } from 'vite';
+import analog from '@analogjs/platform';
 
+export default defineConfig(({ mode }) => ({
+  // ...
+  plugins: [analog({
+    // analog configuration
+  })],
+  // ...
+}));
 ```
+
+
+`angular.json`
+```json
+{ 
+  // ...
+      "architect": {
+        "build": {
+          "builder": "@analogjs/platform:vite",
+          // ...
+        },
+        "serve": {
+          "builder": "@analogjs/platform:vite-dev-server",
+          // ...
+        },
+        "test": {
+          "builder": "@analogjs/platform:vitest"
+        }
+      }
+  // ...
+}
+```
+---
+- analog fournit des plugins de build pour compiler votre appli angular
+- utilise vite et le compilateur angular via le plugin
+- si vous voulez utiliser vite et vitest sans utiliser les autres features d'angular, vous pouvez.
+- astro j'ai pas testé. mais en gros c'est plutôt, intégrer de l'angular dans app astro
+
+
+### Nice libs integration
+- NX - <https://nx.dev/>
+- Playwright - <https://playwright.dev>
+- Astro - <https://astro.build/> 
+---
+- analogjs a une forte dépendance à @nx
+- playwrigth pour les tests de bout en bout
 
 
 ### File-based routing
 
 ```
-.
+src/app/pages
 ├── checkout
+│   ├── (checkout).page.ts
 │   ├── basket.page.ts
 │   ├── cart.page.ts
 │   └── summary.page.ts
@@ -207,13 +254,22 @@ Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisab
     ├── [id].page.ts
     └── (list).page.tsx
 ```
+---
+- chaque fichier .ts contient un composant
+- notez les crochets et parenthèse 
 
 
-#### Example
-
-
-
-#### Dynamic routes from folder tree
+#### Donne ces URLs
+```
+/home
+/products
+/products/{id}
+/checkout/basket
+/checkout/cart
+/checkout/summary
+```
+---
+- C'est le nommage des fichiers qui a définit nos url's
 
 
 #### Path params
@@ -221,19 +277,42 @@ Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisab
 - \[myParam\].page.ts
 
 
-#### Ghost page /
+#### Pathless page component
 
-- `path.page.ts`: /path
-- `path/index.page.ts` : /path
-- `path/(path).page.ts` : /path
+- `path.page.ts` => `/path`
+- `path/index.page.ts` => `/path`
+- `path/(path).page.ts` => `/path`
 ---
-- les deux sont équivalents 
+- les trois sont équivalents 
+
+
+#### Dynamic routes from folder tree
+```typescript
+const appRoutes: Route[] = [
+  {
+    path: '',
+    component: LayoutPage, // layout.page.ts
+    children: [
+      {
+        path: 'checkout',
+        component: CheckoutPage, // checkout/(checkout).page.ts
+        children:
+        [
+          // etc...
+        ] 
+      }
+    ]
+  }
+]
+```
+---
+- en interne, analogjs reconstruit l'arbre de routage et les chemin pour angular
+- vous n'avez plus besoin de ces définitions
 
 
 #### Page component type
-- export default
 `home.page.ts`
-```typescript
+```typescript [|7]
 import { Component } from '@angular/core';
 
 @Component({
@@ -242,17 +321,24 @@ import { Component } from '@angular/core';
 })
 export default class HomePage {}
 ```
+---
+- noter le export default
+- tout seul pas suffisant pour reproduire la puissance du routeur
 
 
 #### Page metadata
 ```ts
 export const meta: RouteMeta = {
-  // canActivate, canMatch, guard, resolvers, providers etc...
+  // guards, canActivate, canMatch, etc...
+  // guard, resolvers, providers etc...
 }
 
 @Component({/** */})
-export default class PathPage {}
+export default class HomePage {}
 ```
+---
+- On peut retrouver toute l'API du routeur grâce à cette balise meta
+- 
 
 
 ### Markdown as content routes
@@ -262,8 +348,8 @@ export default class PathPage {}
 src
 ├── app 
 ├── content
-│   ├── mon-contenu.md
-│   └── en-format-markdown.md
+│   ├── mon-premier-article.md
+│   └── un-autre-article.md
 └── pages
 ```
 
@@ -272,44 +358,124 @@ src
 
 ```markdown
 ---
-publishedDate: '2024-01-09'
-slug: mon-super-article
-meta:
-  tags:
-    - yaml
+title: My First Post
+slug: 2022-12-27-my-first-post
+description: My First Post Description
+coverImage: https://example/url-image/png
 ---
 
 ## titre
+
+contenu au format __markdown__
 ```
+
+
+#### Markdown component
+
+```typescript [|1|6-11|24-26|18|19]
+// /src/app/pages/articles.[slug].page.ts
+import { injectContent, MarkdownComponent } from '@analogjs/content';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
+
+export interface ArticleAttributes {
+  title: string;
+  slug: string;
+  description: string;
+  coverImage: string;
+}
+
+@Component({
+  standalone: true,
+  imports: [MarkdownComponent, AsyncPipe, NgIf],
+  template: `
+    <ng-container *ngIf="article$ | async as article">
+      <h1>{{ article.attributes.title }}</h1>
+      <analog-markdown [content]="article.content"></analog-markdown>
+    </ng-container>
+  `,
+})
+export default class ArticleComponent {
+  readonly article$ = injectContent<ArticleAttributes>({
+    param: 'slug', 
+  });
+}
+```
+---
+- urls vont être `/articles/[slug]` vu le nom du composant
+- front-matter récupérables en tant qu'object
+- contenu markdown de votre fichier, injecté en tant que html
 
 
 #### Mermaid support
-
-#### Example
-
-```mermaid
-flowchart TD
-    A[Shell] --> B(Page A)
-    A --> C(Page B)
-    C --> D[Laptop]
-    C --> E[iPhone]
-    C --> F[fa:fa-car Car]
+`app.config.ts`
+```typescript
+withMarkdownRenderer({
+  loadMermaid: () => import('mermaid'),
+});
 ```
+---
+- transformation markdown, donc possible d'avoir des plugins markdown
+- mermaid en est un
+- lazy-loading
 
-#### 
+
+<!-- .slide: data-background-iframe="http://mermaid.js.org/intro/" data-background-interactive -->
+
+
+#### Et aussi :
+
+- coloration syntaxique avec prismjs
+- extensibilité
+---
+- fin des features markdown
 
 
 ### Hybrid SSR/SSG
 
-// TODO
+- pré-rendu
+- rendu serveur ( nitro )
+---
+- SSG : il faut lister les pages dans la config
+- autre avantage: génération de sitemap.xml 
+- SSR : analogjs builde un serveur node.js basé sur nitro pour servir les pages
 
 
 ### Api routes / server
 ---
-de la même manière que pour 
+- de la même manière que pour nos pages front
+- analogjs fournit un système ou on peut utiliser
+- l'arborescence des répertoires pour définir nos routes
 
 
 #### h3 / nitro
+
+<https://nitro.unjs.io/>
+
+
+#### Définir des routes
+`src/server/routes` => /api
+
+
+`src/server/routes/v1/hello.ts`
+```typescript
+import { defineEventHandler } from 'h3';
+
+export default defineEventHandler(() => {
+  return { message: 'Hello World' }
+});
+```
+
+
+```
+src/server/routes
+└── v1
+    ├── users
+    │   └── [id].get.ts  // GET /api/v1/users/{id}
+    └── users.post.ts    // POST /api/v1/users
+```
+---
+- Noter que le "type" .component.ts est le verbe http.
 
 
 
@@ -443,7 +609,7 @@ They want their shirt back.
 
 ### Experimental !
 
-```typescript [,11]
+```typescript [|11]
 import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
 
@@ -465,7 +631,8 @@ export default defineConfig(({ mode }) => ({
 
 ## Conclusion
 
-cas d'usage ou AnalogJS est intéressant
+- étonnant, non ?
+- cas d'usage ou AnalogJS est intéressant
 ---
 - quand déja une base angular
 - compatible nx
@@ -486,4 +653,4 @@ Cas d'usage ou AnalogJS est intéréssant
 
 ?
 
-## Thank you
+## Et merci
