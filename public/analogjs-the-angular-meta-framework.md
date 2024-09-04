@@ -492,8 +492,8 @@ new component authoring format
 - C'est tout frais, semaine dernière
 
 
-### .ng files
-`hello.ng`
+### .analog files
+`hello.analog`
 ```html
 <template>
   <p>hello works!</p>
@@ -620,7 +620,7 @@ export default defineConfig(({ mode }) => ({
       ssr: false,
       vite: {
         experimental: {
-          dangerouslySupportNgFormat: true
+          supportAnalogFormat: true
         }
       },
     }),
