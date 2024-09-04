@@ -11,14 +11,14 @@
   },
   "devDependencies": {
     "@types/reveal.js": "^4.4.8",
-    "sass": "^1.69.5",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10"
+    "sass": "^1.78.0",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.3"
   },
   "dependencies": {
     "@catppuccin/highlightjs": "^0.1.4",
     "@catppuccin/palette": "^0.2.0",
     "gh-pages": "^6.1.1",
-    "reveal.js": "^5.0.4"
+    "reveal.js": "^5.1.0"
   }
 }
