@@ -653,4 +653,13 @@ Cas d'usage ou AnalogJS est intéréssant
 
 ?
 
+
 ## Et merci
+
+<div class="col">
+    <a href="https://openfeedback.io/devfestnantes24/2024-10-17/analogjslemetaframeworkpourangular" target="_blank">
+        <img src="devfest-openfeedback.png" style="max-width: 40%" />
+    </a>
+    <h3>⬆️  Feedback  ⬆️</h3>
+</div>
+
