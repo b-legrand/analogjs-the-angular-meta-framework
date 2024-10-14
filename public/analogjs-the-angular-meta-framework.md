@@ -6,18 +6,21 @@ The full-stack Angular meta-framework
 
 ## Hi, my name is
 <div class="row">
-<img src="assets/images/benjamin-legrand.png" style="border-radius: 100%;width: 40%" />
+<img src="assets/benjamin-legrand.png" style="border-radius: 100%;width: 40%" />
 
 - Benjamin Legrand <br> [@benjilegnard](https://twitter.com/benjilegnard)
-- Tech Lead ( onepoint )
+- Tech Lead ([@onepoint](https://www.groupeonepoint.com/))
 - Angular/Typescript/Node
 </div>
+---
+- Tech Lead chez Onepoint, viendez au stand
+- Dans une autre vie, je faisais du java.
 
 
-## Analog.JS
+## Analog.JS 🔺
 <div class="row">
 
-<img src="assets/images/brandon-roberts.jpeg" style="border-radius: 100%;width: 40%; float:left;" />
+<img src="assets/brandon-roberts.jpeg" style="border-radius: 100%;width: 40%; float:left;" />
 
 - Brandon Roberts [@brandontroberts](https://twitter.com/brandontroberts)
 - NGRX contributor
@@ -28,112 +31,129 @@ Auteur d'analogJS
 Contributeur ngrx
 
 
-## Plan
-- c'est quoi un meta-framework ?
-- les features d'analogjs
-- h3 / nitro
+## Plan 🗺️
+- c'est quoi un meta-framework ?<!-- .element: class="fragment" -->
+- (re)définissons quelques termes<!-- .element: class="fragment" -->
+- analogjs features & concepts<!-- .element: class="fragment" -->
+- comment fait-il ?<!-- .element: class="fragment" -->
+- analogjs : les intégrations<!-- .element: class="fragment" -->
+- serveur et options de déploiement<!-- .element: class="fragment" -->
 ---
-démo peut-être
+- voilà ce dont je vais parler
 
 
 
-## Introduction
-
-
-### Wait, wat?
-
-- What is a meta-framework ?
-- Terms & definitions
-- SSR, SSG, CSR, WTF, BBQ.
-
-
-### SSR
-- Server-Side Rendering
+## Meta-framework ? qu'est-ce que c'est ?
+<img src="assets/devfest/gpt.png" />
 ---
-- Rendu serveur
-- historiquement on a toujours fait ca
+Pas la peine dedemander à ChatGPT, de toute facons, il est décédé, je vais vous expliquer.
 
 
-<img src="assets/ssr.drawio.svg" style="width: 100%" />
-
-
-### CSR
-- Client Side Rendering
-
-
-<img src="assets/csr.drawio.svg" style="width: 80%" />
+<img src="assets/meta-logo.png"/>
 ---
-- On distingue du SSR: c'est le browser qui fait la génération du HTML.
+- On ne parle pas de meta.
+- évidemment, 
 
 
-### SPA
-- Single Page Application
+### Méta cagoule !
+définition:
+<blockquote>
+Méta est un préfixe qui provient du grec `μετά` (meta) (après, au-delà de, avec)<br/>
+Il exprime tout à la fois la réflexion, le changement, la succession, le fait d'aller au-delà, à côté de, entre ou avec. 
+</blockquote>
+
+
+### Méta-barons
+<blockquote>Méta est souvent utilisé dans le vocabulaire scientifique pour indiquer l'autoréférence (réflexion), ou pour désigner un niveau d'abstraction supérieur</blockquote>
+
+source: [wikipedia.fr](https://fr.wikipedia.org/wiki/M%C3%A9ta_(pr%C3%A9fixe))
 ---
-- Historiquement: client-side only
-- ne veut pas dire qu'on fait qu'une seule page
+- métalanguage, métadonnées
+- Selon le contexte, le préfixe équivaut au sens de profond 
+- ah, niveau d'abstraction. ça me parle on connait ca en informatique
+- donc un meta-framework, c'est un niveau d'abstraction supérieur à un framework.
 
 
-#### MPA
-<img src="assets/spa-before.drawio.svg" style="width: 80%" />
-
-
-#### SPA
-<img src="assets/spa-after.drawio.svg" style="width: 80%" />
-
-
-### SSG
-- Static Site Generation
-
-
-<img src="assets/ssg.drawio.svg" style="width: 80%" />
+### Soyons sérieux un instant 
+<img src="assets/meta-lois-stephane.png" />
 ---
-Conclusion:
-- Analog nous permets de faire tout ca, du rendu serveur, des spa angular, de la génération de sites statiques
+- Si vous voulez continuez avec une autre conférence meta ensuite.
+- Je vous recommende celle sur les metas-lois de Stéphane Trebel.
 
 
+### Mais un framework, qu'est-ce que c'est ?
+Définition
 
-## Meta-framework ?
-
-
-### Qu'est ce que c'est ?
-
-
-#### Take your client-only libs
-
-- Angular
-- React
-- Vue
-- Svelte
-- Qwik
+<blockquote>
+Un framework est un ensemble de composants logiciels qui sert à créer les fondations ainsi que les grandes lignes de tout ou d'une partie d'un logiciel (architecture).
+</blockquote>
 
 
-#### Put them on a server
+#### Aussi simple que deux et deux font quatre
 
-- Angular + Analog
-- React + Next
-- Vue + Nuxt
-- Svelte + SvelteKit
-- Qwik + Qwik City
+- Un meta framework, est donc un niveau d'abstraction supérieur à un ensemble de composants logiciels...
 ---
-## Joke
-Y U NO NGXT ?
+- Bon bref, vous avez compris l'idée.
+- AnalogJS est un meta-framework pour Angular = un niveau d'abstraction supérieur à Angular, lui rajoutant des fonctionnalités diverses et variées.
 
 
-### Add some features
-- accès à requête / réponse HTTP<!-- .element: class="fragment" -->
-- routage "universel"<!-- .element: class="fragment" -->
-- file-based routing<!-- .element: class="fragment" -->
-- routes d'api<!-- .element: class="fragment" -->
+#### Qu'est ce que c'est ? vraiment.
+---
+- Bon plus simplement et dans notre contexte.
+- AnalogJS est un meta-framework pour angular ( ca veut toujours rien dire )
+- Dans le domaine du web, on a déjà des examples de meta-frameworks
 
 
-### Avantages / Inconvénients
+#### On prends des librairies "client"
+| Framework |
+| --------- |
+| Angular   |
+| React     |
+| Vue       |
+| Svelte    |
+| Solid     |
+| Qwik      |
+---
+- Prenons quelques example de framework front. De base, ils sont tous client-side, ils sont fait pour faire des SPA
+- Oui, j'ai mis React là dedans, et Qwik, mais on s'en fiche, suivez moi.
+
+
+#### Et on leur ajoute une dimension serveur.
+| Framework |   | Meta-framework |
+| --------- | - | -------------- |
+| Angular   | + | AnalogJS       |
+| React     | + | Next.js        |
+| React     | + | Remix          |
+| Vue       | + | Nuxt           |
+| Svelte    | + | SvelteKit      |
+| Solid     | + | SolidStart     |
+| Qwik      | + | Qwik City      |
+---
+- Y U NO NGXT ?
+- Toutes ces solutions sont couplées à la librairie de base pour fournir des fonctionnalités supplémentaires.
+
+
+### Ajout de nouvelles fonctionnalités:
+- 📋 accès aux requêtes / réponses HTTP<!-- .element: class="fragment" -->
+- 🚏 routage "universel"<!-- .element: class="fragment" -->
+- 📂 file-based routing<!-- .element: class="fragment" -->
+- 🏋️‍♂️capacités "full-stack" (api routes)<!-- .element: class="fragment" -->
+
+---
+Maintenant qu'on est côté serveur,
+- on a accès à la requête / réponse HTTP 
+- le routage doit être universel, c'est à dire, doit fonctionner coté serveur et coté client 
+- file-based routing, c'est à dire, on définit nos routes en fonction de l'arborescence des fichiers
+- une composante serveur en plus
+- voyons les avantages et inconvénients.
 
 
 ### Meta-frameworks:<br/> the good parts
+- 🧑‍🤝‍🧑 Même code & composants entre serveur et client<!-- .element: class="fragment" -->
+- ⛵ Navigations full page et SPA.<!-- .element: class="fragment" -->
+- 💰 Bénéfices du CSR et du SSR<!-- .element: class="fragment" -->
+- 🏋️ull-stack apps<!-- .element: class="fragment" -->
 
-- Même code / composants <br/> entre serveur et client<!-- .element: class="fragment" -->
-- Navigations full page et SPA.<!-- .element: class="fragment" -->
-- Bénéfices du CSR et du SSR<!-- .element: class="fragment" -->
 ---
 - surtout important on évite le contexte switch
 - on évite d'avoir du rendu fait serveur différent de coté client
@@ -160,88 +180,105 @@ Y U NO NGXT ?
 ```
 ---
 - index.page.tsx everywhere
-- "une des critiques"
+- critiques surtout faites à Next.js
+- "une des critiques" mais je pre-shot : n'est pas pertinent en analogjs, on va voir pourquoi
 
 
-#### Meta-frameworks:<br/> the bad parts
+#### Woking on a Next.js 13 project be like
+<img src="assets/working-on-a-13-project-be-like.webp" />
 
-- abstractions<!-- .element: class="fragment" -->
-- vendor-locking<!-- .element: class="fragment" -->
+source: [reddit](https://www.reddit.com/r/nextjs/comments/147pvkw/working_on_a_nextjs_13_project_be_like/)
+
+
+
+## Est ce qu'Angular a besoin d'un meta-framework ?
+
+
+<img src="assets/google-ioconnect-meta.png"/>
+
+source: [Lamis Chebbi on linkedin](https://www.linkedin.com/posts/lamis-chebbi-026368ab_googleioconnect2024-javascript-webdevelopment-activity-7212424947657306116-ia-Z)
 ---
-- abstractions bizarres
-- use client / use server
-- code spécifiques a la solution
-- analogjs ne résouds pas forcément ca, car il fournit des abstractions.
+- Google IO Connect 2024
+- à l'horizontale : Angular / Astro / Next / Remix / Nuxt / SolidStart / SvelteKit
+- Angular est un déjà classable dans les meta-framework complet
+- à la verticale : component-base / virtual dom / SSR support / SSG / TS Reactive / Hydration / Image Components
+- seules fonctionnalités manquantes: file-based routing et "server components"
 
 
-## AnalogJS Features
-
-
-### Vite / Vitest
-- AnalogJS is a vite plugin<!-- .element: class="fragment" -->
-- Everything is a vite plugin<!-- .element: class="fragment" -->
-- NX libs integration<!-- .element: class="fragment" -->
-- e2e testing with Playwright<!-- .element: class="fragment" -->
+### Angular is a platform.
+- Yes, but...
+- Pas d'opinions sur l'hébergement.
+- SSR is kinda... painful <span class="fragment">( for now )</span><span class="fragment">( but it's getting better )</span>
 ---
-- Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisable un peu partout.
-- utilise esbuild et rollup en dessous
-- quelques autres intégrations
+- autant on peut dire qu'angular est opinioné, sur l'hébergement, pass trop
+- on est un peu livré à nous même
+- Donc bon, la question se pose, j'ai pas vraiment de réponse, donc j'ai envie de dire...
 
 
-`vite.config.ts`
-```ts
-import { defineConfig } from 'vite';
-import analog from '@analogjs/platform';
-
-export default defineConfig(({ mode }) => ({
-  // ...
-  plugins: [analog({
-    // analog configuration
-  })],
-  // ...
-}));
-```
-
-
-`angular.json`
-```json
-{ 
-  // ...
-      "architect": {
-        "build": {
-          "builder": "@analogjs/platform:vite",
-          // ...
-        },
-        "serve": {
-          "builder": "@analogjs/platform:vite-dev-server",
-          // ...
-        },
-        "test": {
-          "builder": "@analogjs/platform:vitest"
-        }
-      }
-  // ...
-}
-```
+### Est-ce que Angular a besoin d'un meta-framework ?
+- peut-être bien que oui
+- peut-être bien que non
 ---
-- analog fournit des plugins de build pour compiler votre appli angular
-- utilise vite et le compilateur angular via le plugin
-- si vous voulez utiliser vite et vitest sans utiliser les autres features d'angular, vous pouvez.
-- astro j'ai pas testé. mais en gros c'est plutôt, intégrer de l'angular dans app astro
+- à vous de vous faire votre avis après ce que je vais vous présenter
+- AnalogJS est un meta-framework pour Angular
+- AnalogJS est un plug-in vite
+- Qui nous apporte pas mal de fonctionnalités plutôt sympas
 
 
-### Nice libs integration
-- NX - <https://nx.dev/>
-- Playwright - <https://playwright.dev>
-- Astro - <https://astro.build/> 
+### AnalogJS 
+- features de meta-framework
+- \+ developer experience
+- \+ facilite le SSR / SSG / CSR /SPA
 ---
-- analogjs a une forte dépendance à @nx
-- playwrigth pour les tests de bout en bout
+- Bon ça fait beaucoup de sigles, donc avant d'attaquer les features.
+- Pourquoi c'est bien qu'on puisse faire tout ça ?
+
+
+
+## (re-)définissons quelques termes.
+
+- SPA, SSR, SSG, CSR, WTF, BBQ.
+
+
+### SPA: Single Page Application
+<img src="assets/intro-spa.svg" />
+---
+- Historiquement: client-side only
+- ne veut pas dire qu'on fait qu'une seule page
+
+
+### CSR: Client-Side Rendering 
+
+<img src="assets/intro-client-side-rendering.svg" />
+
+
+### SSR: Server-Side Rendering
+<img src="assets/intro-server-side-rendering.svg" />
+---
+- Rendu serveur
+- historiquement on a toujours fait ca
+- MPA: multi-page application
+
+
+### SSG: Static Site Generation
+<img src="assets/intro-static-site-generation.svg" />
+---
+- Génération de site statique 
+- ici c'est votre pipeline de déploiement qui génère les pages
+- pas de serveur "dynamique" avec bdd et tout, juste des fichiers html
+- serveurs statiques (nginx, apache, S3 etc...)
+- En Conclusion:
+- Analog nous permets de faire tout ca, du rendu serveur, des spa angular, de la génération de sites statiques
+
+
+
+## AnalogJS Features & Concepts
+<img src="assets/devfest/kong.png" />
 
 
 ### File-based routing
 
-```
+```no-highlight
 src/app/pages
 ├── checkout
 │   ├── (checkout).page.ts
@@ -252,14 +289,15 @@ src/app/pages
 ├── (layout).page.ts
 └── products
     ├── [id].page.ts
-    └── (list).page.tsx
+    └── (list).page.ts
 ```
 ---
-- chaque fichier .ts contient un composant
-- notez les crochets et parenthèse 
+- chaque fichier .ts contient un composant routés
+- le répertoire pages est une convention.
+- notez les crochets et parenthèse
 
 
-#### Donne ces URLs
+#### Donne ce routage, avec ces URLs
 ```
 /home
 /products
@@ -269,7 +307,8 @@ src/app/pages
 /checkout/summary
 ```
 ---
-- C'est le nommage des fichiers qui a définit nos url's
+- C'est le nommage des fichiers qui a définit nos appRoutes
+- analogjs va lire les fichiers et les transformer en routes angular
 
 
 #### Path params
@@ -286,7 +325,7 @@ src/app/pages
 - les trois sont équivalents 
 
 
-#### Dynamic routes from folder tree
+#### Analog va recréer un arbre de routage.
 ```typescript
 const appRoutes: Route[] = [
   {
@@ -323,7 +362,8 @@ export default class HomePage {}
 ```
 ---
 - noter le export default
-- tout seul pas suffisant pour reproduire la puissance du routeur
+- vu que vous ne déclarez plus quel composant est routé, il faut que ca soit l'export par défaut pour qu'analog fasse le lien entre fichier de page et composant
+- vous me direz : tout seul pas suffisant pour reproduire la puissance du routeur
 
 
 #### Page metadata
@@ -338,7 +378,19 @@ export default class HomePage {}
 ```
 ---
 - On peut retrouver toute l'API du routeur grâce à cette balise meta
-- 
+- avantage : la définition de la route est proche de la définition du composant
+- "elle est le composant"
+
+
+#### Pre-shot des critiques
+- Une URL, c'est déjà un chemin vers une arborescence de fichiers<!-- .element: class="fragment" -->
+- Organiser ses composants routés par url = une seule source de vérité sur l'url<!-- .element: class="fragment" -->
+- Ne veut pas dire "mettre touts nos composants dans un seul répertoire de page"<!-- .element: class="fragment" -->
+---
+- Organisez vous bien.
+- Ne mettez pas tout dans un seul répertoire 
+- feature-oriented architecture
+- passons à la deuxième grosse feature d'analog
 
 
 ### Markdown as content routes
@@ -407,54 +459,343 @@ export default class ArticleComponent {
 - contenu markdown de votre fichier, injecté en tant que html
 
 
-#### Mermaid support
+### Mermaid support
 `app.config.ts`
 ```typescript
-withMarkdownRenderer({
-  loadMermaid: () => import('mermaid'),
-});
+// ...
+providers: [
+  provideMarkdownRenderer({
+    loadMermaid: () => import('mermaid'),
+  }),
+],
 ```
 ---
 - transformation markdown, donc possible d'avoir des plugins markdown
-- mermaid en est un
-- lazy-loading
+- mermaid en est un outil pour faire des diagrammes en javascript.
+- lazy-loading de mermaid pour ne pas alourdir le bundle. Ne sera chargé que si nécessaire.
 
 
-<!-- .slide: data-background-iframe="http://mermaid.js.org/intro/" data-background-interactive -->
-
-
-#### Et aussi :
-
-- coloration syntaxique avec prismjs
-- extensibilité
+#### Apparté sur Mermaid
+<img src="assets/mermaid-header.png" />
 ---
-- fin des features markdown
+c'est une lib javascript pour faire plein de diagrammes différent.
+
+
+##### Flowchart
+<div class="row">
+<pre style="width:50%"><code class="hljs language-markdown">
+```mermaid
+graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+```
+</code></pre>
+<img src="assets/mermaid-flowchart.svg" style="max-width: 20%" />
+</div>
+
+
+##### Sequence diagram
+<div class="row">
+<pre style="width:50%"><code class="hljs language-markdown">
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop HealthCheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
+</code></pre>
+<img src="assets/mermaid-sequence.svg" style="width:50%" />
+</div>
+
+
+##### Class diagram
+
+<div class="row">
+<pre style="width:50%"><code class="hljs language-markdown" >
+```mermaid
+classDiagram
+Class01 <|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --> C2 : Where am i?
+Class09 --* C3
+Class09 --|> Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 <--> C2: Cool label
+```
+</code></pre>
+<img src="assets/mermaid-class.svg" style="width:50%" />
+</div>
+
+
+##### Et plein d'autres types de diagrammes:
+- State diagram
+- Gantt
+- git commit graph 
+- entity relationships
+- C4 
+- Mindmaps
+- Timeline 
+- ... et bien d'autres
+---
+- je vous laisse aller voir la doc de mermaid pour vocabulaire
+- pour en revenir à Analog...
 
 
 ### Hybrid SSR/SSG
-
-- pré-rendu
-- rendu serveur ( nitro )
+- Static Site Generation (SSG)
+- AND Server Side Rendering (SSR)
 ---
-- SSG : il faut lister les pages dans la config
-- autre avantage: génération de sitemap.xml 
-- SSR : analogjs builde un serveur node.js basé sur nitro pour servir les pages
+- AnalogJS permet de faire les deux
+- feature qui arrive bientôt dans Angular
 
 
-### Api routes / server
+```typescript
+// ...
+    analog({
+      prerender: {
+        routes: async () => [
+          '/',
+          '/about',
+          '/blog',
+          '/blog/posts/2023-02-01-my-first-post',
+        ],
+      },
+    }),
+```
+
+
+### AnalogJS, d'autres features encore:
+- coloration syntaxique avec [prismjs](https://prismjs.com/)
+- génération de sitemap.xml automatique.<!-- .element: class="fragment" -->
+- code generation (schematics).<!-- .element: class="fragment" -->
+- open-graph image generation<!-- .element: class="fragment" -->
+- server-side-data-fetching<!-- .element: class="fragment" -->
+---
+- fin des features principales d'analogjs
+- server side j'en ai pas parlé parce que j'ai pas encore testé.
+- mais ça vous permets de faire de la résolution de données dans des fichiers 
+
+
+### En bref.
+- file-based routing<!-- .element: class="fragment" -->
+- markdown as content routes<!-- .element: class="fragment" -->
+- mermaid support<!-- .element: class="fragment" -->
+- SSR / SSG support<!-- .element: class="fragment" -->
+---
+- fin des features principales d'analogjs
+
+
+
+## Mais comment fait-il donc ?
+<img src="assets/devfest/poulpe.png" />
+---
+- Comment analogjs fait-il pour faire tout ça ?
+- accès aux fichiers, lecture, parsing, etc...
+- c'est là qu'on va parler de vite, parce que le secret d'analogjs, c'est vite.
+
+
+### AnalogJS is a Vite plugin
+<img src="assets/integration-vite.png" />
+---
+- Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisable un peu partout.
+- utilise rollup et les modules natifs ESM en dessous
+
+
+### C'est devenu le défaut ?
+`pnpm create vite my-app --template <preset>`
+| JavaScript | TypeScript |
+| ---------- | ---------- |
+| vanilla    | vanilla-ts |
+| vue        | vue-ts     | 
+| react      | react-ts   |
+| preact     | preact-ts  |
+| lit        | lit-ts     |
+| svelte     | svelte-ts  |
+| solid      | solid-ts   |
+| qwik       | qwik-ts    |
+---
+- vite est devenu le bundler par défaut pour les projets modernes
+- a remplacé create-react-app ? webpack pour beaucoup de projets, 
+
+
+### Everything is a Vite plugin
+<img src="assets/oprah-vite-plugin.jpg" />
+
+
+### Vite, c'est quoi ?
+
+- 📦 un bundler (esm-based)
+- 🔃 un serveur de développement (HMR)
+---
+- vite est un bundler, basé sur rollup
+- lit vos fichiers pour en faire des "chunks" js.
+- vite est un serveur de développement, qui utilise esbuild pour la compilation, fournit un hot-reload rapide
+
+
+### Bundle-based bundlers
+<img src="assets/schema-vite-bundle-based.svg" />
+
+source: <https://vite.dev/guide/why.html>
+---
+- webpack ou autres outils "historiques" faisaient comme ça.
+
+
+### ESM-native bundlers
+<img src="assets/schema-vite-native-esm.svg" />
+
+source: <https://vite.dev/guide/why.html>
+---
+- vite lit les imports et les résouds, à la demande. ( en mode dev )
+- pas besoin de tout recompiler à chaque fois. 
+
+
+### AnalogJS est un plugin vite.
+- Vite s'occupe du build, plus uniquement tsc + angular.
+- Angular devient utilisé en tant que "compilateur" par analogjs.
+- Analog peut faire se qu'il veut en amont.
+---
+- Pour simplifier
+
+
+### Comment ça s'articule ?
+`vite.config.ts`
+```ts
+import { defineConfig } from 'vite';
+import analog from '@analogjs/platform';
+
+export default defineConfig(({ mode }) => ({
+  // ...
+  plugins: [analog({
+    // analog configuration
+  })],
+  // ...
+}));
+```
+
+
+`angular.json`
+```json
+{ 
+  // ...
+      "architect": {
+        "build": {
+          "builder": "@analogjs/platform:vite",
+          // ...
+        },
+        "serve": {
+          "builder": "@analogjs/platform:vite-dev-server",
+          // ...
+        },
+        "test": {
+          "builder": "@analogjs/platform:vitest"
+        }
+      }
+  // ...
+}
+```
+---
+- analog fournit des plugins de build pour compiler votre appli angular
+- utilise vite et le compilateur angular via le plugin
+- si vous voulez utiliser vite et vitest sans utiliser les autres features d'angular, vous pouvez.
+
+
+### Vitest
+<img src="assets/integration-vitest.png" />
+---
+- Quelques mots sur vitest.
+- vitest est un test runner basé sur vite 
+- alternative à karma/jasmine/jest
+- plus rapide, plus simple, plus moderne.
+- si vous êtes full-esm déjà, et que vous en avez marre de jest+babel, vitest est pour vous.
+
+
+### Vitest
+
+- Vous pouvez utiliser Vitest sans analogjs sur un projet angular 
+
+
+### D'autres intégrations
+- NX - <https://nx.dev/>
+- Playwright - <https://playwright.dev>
+- Astro - <https://astro.build/>
+- Markdown (with marked) - <https://marked.js.org/>
+- Mermaid - <https://mermaid-js.github.io/mermaid/#/>
+- Storybook - <https://storybook.js.org/>
+- Ionic Framework - <https://ionicframework.com/>
+- Material Design - <https://material.angular.io/>
+---
+- AnalogJS est un plugin Astro aussi
+- analogjs a une forte dépendance à @nx qu'ils ont découplé un peu
+- playwright pour les tests de bout en bout
+
+
+
+## Et le serveur dans tout ça ?
+<img src="assets/devfest/cloud.png" />
+
+
+### Hybrid SSR/SSG
+- pré rendu statique (vite)
+- rendu serveur "dynamique"<span class="fragment">(nitro)</span>
+
+---
+statique, hébergé sur un serveur stupide genre apache, nginx, s3 ou autres
+
+
+### Nitro
+Nitro - <https://nitro.unjs.io/>
+
+<img src="assets/integration-nitro.png" />
+---
+- par les gars derrière nuxt.js, c'est ce qui s'occupee du SSR de nuxt.
+- même contributeurs.
+- analogjs utilise nitro pour le serveur SSR.
+- bon, eux ils appellents ça "toolkit", mais bon 
+- en vrai c'est lui aussi un meta-framework regroupant un ensemble de librairies de l'écosystème UnJS
+
+
+### h3 ⚡
+<https://h3.unjs.io/>
+
+- event handlers
+- routes 
+- websockets
+- server-sent events
+---
+- pour simplifier, on va dire que c'est une alternative moderne à express
+
+
+### Nitro y ajoute, par dessus
+- file based routing
+- auto imports
+- connexion DB avec db0
+- etc...
 ---
 - de la même manière que pour nos pages front
 - analogjs fournit un système ou on peut utiliser
 - l'arborescence des répertoires pour définir nos routes
 
 
-#### h3 / nitro
-
-<https://nitro.unjs.io/>
-
-
-#### Définir des routes
-`src/server/routes` => /api
+#### Définir des routes server avec analog
+`src/server/routes` => `/api`
+---
+- Tout ce que vous mettez dans ce répertoire sera accessible via `/api`
+- convention analogjs
 
 
 `src/server/routes/v1/hello.ts`
@@ -466,8 +807,15 @@ export default defineEventHandler(() => {
 });
 ```
 
+`http get /api/v1/hello`<!-- .element: class="fragment" -->
 
-```
+---
+- cet handler sera disponible par un GET /api/v1/hello
+
+
+#### File-based routing
+
+```no-highlight
 src/server/routes
 └── v1
     ├── users
@@ -478,18 +826,50 @@ src/server/routes
 - Noter que le "type" .component.ts est le verbe http.
 
 
+## Options de déploiement
 
-## Demo
+
+### Zero config providers
+- aws amplify
+- azure
+- cloudflare pages
+- netlify
+- stormkit
+- vercel
+- zeabur
+
+source: <https://nitro.unjs.io/deploy>
+---
+- Selon les packages npm installés et l'environnement, nitro peut détecter sur quel cible déployer
+
+
+### Presets nitro disponible
+| | | | | | |
+| - | - | - | - | - | - |
+| Alwaysdata | AWS Lambda | AWS Amplify | Azure | Cleavr | Cloudflare |
+| Deno Deploy | DigitalOcean | Edgio | Firebase | Flightcontrol | Genezio |
+| GitHub Pages | GitLab Pages | Heroku | IIS | Koyeb | Netlify |
+| Platform.sh | Render.com | StormKit | Vercel | Zeabur | Zerops |
+
+
+### Bref.
+- partie serveur gérée par nitro
+- file-based routing pour les routes d'API
+- déploiement sur plusieurs plateformes
+- support de runtime alternatifs (deno, bun)
 
 
 
 ## One more thing...
 
-new component authoring format
+- new component authoring format
 - [Discussion github](https://github.com/analogjs/analog/discussions/824)
 ---
 - Vu qu'analog utilise déja le compilateur angular.
-- C'est tout frais, semaine dernière
+- Pourquoi ne pas utiliser les fichiers .ng pour définir nos composants angular ?
+- Petit scandale / confusion, le nom de fichier prétant à confusion, la fonctionnalité a été revert ( dans un premier temps )
+- Puis réintroduite sous le nom de fichier .analog
+- risque de "leader d'opinion" sur tweeter qui sont en mode "what if?" et dont les tweets sont pris au sérieux.
 
 
 ### .analog files
@@ -499,10 +879,13 @@ new component authoring format
   <p>hello works!</p>
 </template>
 ```
+---
+- Ceci est un composant angular avec AnalogJS
+- Je vous laisse digérer l'information pour ceux qui connaissent angular.
 
 
-### ts in .ng
-```html
+### ts in .analog files
+```html [|1-13|14-18|19-21]
 <script lang="ts">
   import { signal } from '@angular/core';
 
@@ -527,8 +910,8 @@ new component authoring format
 ```
 
 
-### ts in .ng
-```html
+### ts in .analog files
+```html [|1|2-5|7-9|11-14|16-22|24-34|36-45|48-64|66-70]
 <script lang="ts">
   import { inject, signal, effect, computed } from '@angular/core';
   import { JsonPipe } from '@angular/common';
@@ -604,7 +987,44 @@ new component authoring format
 
 ### Vue.js called
 
-They want their shirt back.
+- They want their ~~shirt~~ component authoring format back.
+---
+- En vrai c'est trop bien
+
+
+### Pre-shot des critiques au SFC.
+
+- Oui mais la séparation des préoccupations ?
+- (SRP) Single Responsability Principle<!-- .element: class="fragment" -->
+
+
+<img src="assets/meme-keep-using-that-word.jpg" style="width: 50%" />
+---
+- SRP: chaque fichier contient tout ce qui est nécessaire pour le composant, son style et son comportement.
+- la responsabilité de la structure, vs la responsabilité de l'apparence, vs la responsabilité du comportement
+- = c'est une seule responsabilité, celle du composant, ne découpez pas par responsabilité technique. ça mène à des abberations.
+
+
+### Colocation de code
+- Ce qui change souvent ensemble, est localisé au même endroit.
+
+
+### Même sans .analog, faites des SFC,<br/>c'est bon pour la santé.
+```Typescript
+@Component({
+  selector: 'my-component',
+  standalone: true,
+  template: `
+    <h1>Hello {{ name() }}</h1>
+  `,
+  styles: [`
+    h1 { color: red; }
+  `],
+})
+class MyComponent {
+  name = signal('World');
+}
+```
 
 
 ### Experimental !
@@ -627,26 +1047,43 @@ export default defineConfig(({ mode }) => ({
   ],
 }));
 ```
+---
+à noter que c'est encore une feature expérimentale
+
 
 
 ## Conclusion
 
 - étonnant, non ?
-- cas d'usage ou AnalogJS est intéressant
+- la DX de vue/nuxt.js pour angular<!-- .element: class="fragment" -->
+- convention over configuration<!-- .element: class="fragment" -->
+- AnalogJS = Angular + Vite + Nitro<!-- .element: class="fragment" -->
+
 ---
-- quand déja une base angular
-- compatible nx
-- certaines partie de l'appli
-- sites institutionnel, FAQ / CMS / blogs / docs
+- Je vous encourage à tester analogjs, c'est vraiment cool.
+- la DX est grandement améliorée
+- conventions à apprendre certes, mais ça vaut le coup, derrière: efficacité et rapidité
 
 
-### Cycle de vie de la donnée
-- mise en cache
-- péremption
-- tout
+### cas d'usage ou AnalogJS est intéressant
+- quand vous avez déja une base de code Angular<!-- .element: class="fragment" -->
+- quand vous avez déjà des connaissances Angular<!-- .element: class="fragment" -->
+- 😏 sinon, utilisez vue + nuxt<!-- .element: class="fragment" -->
+
 ---
-Cas d'usage ou AnalogJS est intéréssant
-- dépends du cycle de vie de 
+- évidemment c'est mieux si vous avez déja une base de code angular 
+- si vous avez déja des connaissances Angular
+
+
+### cas d'usage ou AnalogJS est intéressant
+- pour des sites techniques (documentation, blogs)<!-- .element: class="fragment" -->
+- pour des sites à fort contenu texte peu contribuables<!-- .element: class="fragment" -->
+- pour des besoins de déploiement edge/modernes facilités<!-- .element: class="fragment" -->
+
+---
+- grâce à markdown + mermaid et la coloration syntaxique, on peut facilement faire des sites de documentation
+- permets de se concentrer sur le contenu.
+- si pas de besoin de contribuer, pas besoin de CMS
 
 
 ## Questions
@@ -655,11 +1092,16 @@ Cas d'usage ou AnalogJS est intéréssant
 
 
 ## Et merci
-
-<div class="col">
+<div class="row">
+  <div class="col" style="flex: 1 1 auto">
     <a href="https://openfeedback.io/devfestnantes24/2024-10-17/analogjslemetaframeworkpourangular" target="_blank">
-        <img src="devfest-openfeedback.png" style="max-width: 40%" />
+      <img src="devfest-openfeedback.png" style="max-width: 40%" />
     </a>
     <h3>⬆️  Feedback  ⬆️</h3>
+  </div>
+<div style="width: 20%">
+    <p style="font-size:18px">Easter egg pas caché<br/>"beyond the phobia":<br/> <code style="display:inline">meta-cagoule</code></p>
+    <img src="assets/devfest/oeuf.svg" style="max-width: 50%" />
+</div>
 </div>
 

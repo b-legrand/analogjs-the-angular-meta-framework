@@ -1,24 +1,24 @@
 {
-  "name": "@b-legrand/analogjs-the-angular-meta-framework",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
-  },
-  "devDependencies": {
-    "@types/reveal.js": "^4.4.8",
-    "sass": "^1.79.1",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.6"
-  },
-  "dependencies": {
-    "@catppuccin/highlightjs": "^0.1.4",
-    "@catppuccin/palette": "^0.2.0",
-    "gh-pages": "^6.1.1",
-    "reveal.js": "^5.1.0"
-  }
+    "name": "@b-legrand/analogjs-the-angular-meta-framework",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "deploy": "gh-pages -d dist"
+    },
+    "devDependencies": {
+        "@types/reveal.js": "^5.0.4",
+        "sass": "^1.79.5",
+        "typescript": "^5.6.3",
+        "vite": "^5.4.8"
+    },
+    "dependencies": {
+        "@catppuccin/highlightjs": "^1.0.0",
+        "@catppuccin/palette": "^1.4.0",
+        "gh-pages": "^6.2.0",
+        "reveal.js": "^5.1.0"
+    }
 }

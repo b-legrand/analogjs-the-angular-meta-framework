@@ -64,6 +64,15 @@ Voyons ensemble comment tout ça fonctionne et pourquoi c'est super-ultra-méga-
 
 ## Sources
 
+### Des outils
 - [la doc officielle](https://analogjs.org/)
 - [la chaine youtube de Brandon Roberts](https://www.youtube.com/@BrandonRobertsDev)
 - [la doc de nitro](https://nitro.unjs.io/)
+- [pourqquoi vite?](https://vite.dev/guide/why.html)
+- [vitest](https://vitest.dev/)
+- [front-matter](https://jekyllrb.com/docs/front-matter/)
+
+### Diverses
+
+- Méta(prefixe) <https://fr.wikipedia.org/wiki/M%C3%A9ta_(pr%C3%A9fixe)>
+- Framework <>

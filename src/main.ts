@@ -14,7 +14,7 @@ let deck = new Reveal({
 
 deck.initialize({
   progress: false,
-  controls: true,
+  controls: false,
   slideNumber: "c/t",
   showSlideNumber: "speaker",
   hashOneBasedIndex: true,
