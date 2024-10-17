@@ -314,6 +314,8 @@ src/app/pages
 #### Path params
 
 - \[myParam\].page.ts
+---
+permet de paramétriser votre chemin, ensuite input routé dans le composant
 
 
 #### Pathless page component
@@ -404,6 +406,9 @@ src
 │   └── un-autre-article.md
 └── pages
 ```
+---
+- Analog donne la possibilité de gérer son contenu en markdown.
+- pas besoin de BDD, jamstack.
 
 
 #### Front-matter
@@ -550,7 +555,7 @@ Class08 <--> C2: Cool label
 - C4 
 - Mindmaps
 - Timeline 
-- ... et bien d'autres
+- etc...
 ---
 - je vous laisse aller voir la doc de mermaid pour vocabulaire
 - pour en revenir à Analog...
@@ -652,6 +657,7 @@ Class08 <--> C2: Cool label
 
 source: <https://vite.dev/guide/why.html>
 ---
+- pourquoi vite c'est bien, et plus rapide
 - webpack ou autres outils "historiques" faisaient comme ça.
 
 
@@ -665,9 +671,9 @@ source: <https://vite.dev/guide/why.html>
 
 
 ### AnalogJS est un plugin vite.
-- Vite s'occupe du build, plus uniquement tsc + angular.
+- Vite s'occupe du build, plus uniquement tsc + angular + webpack.
 - Angular devient utilisé en tant que "compilateur" par analogjs.
-- Analog peut faire se qu'il veut en amont.
+- Analog peut faire ce qu'il veut en amont.
 ---
 - Pour simplifier
 
@@ -824,6 +830,7 @@ src/server/routes
 ```
 ---
 - Noter que le "type" .component.ts est le verbe http.
+- pour moi ça fait sens, un fichier par route HTTP, c'est logique.
 
 
 ## Options de déploiement
@@ -863,11 +870,11 @@ source: <https://nitro.unjs.io/deploy>
 ## One more thing...
 
 - new component authoring format
-- [Discussion github](https://github.com/analogjs/analog/discussions/824)
 ---
 - Vu qu'analog utilise déja le compilateur angular.
 - Pourquoi ne pas utiliser les fichiers .ng pour définir nos composants angular ?
 - Petit scandale / confusion, le nom de fichier prétant à confusion, la fonctionnalité a été revert ( dans un premier temps )
+- Compréhension de texte. TwitterVerse "What If"
 - Puis réintroduite sous le nom de fichier .analog
 - risque de "leader d'opinion" sur tweeter qui sont en mode "what if?" et dont les tweets sont pris au sérieux.
 
@@ -1048,21 +1055,28 @@ export default defineConfig(({ mode }) => ({
 }));
 ```
 ---
-à noter que c'est encore une feature expérimentale
-
+- à noter que c'est encore une feature expérimentale
+- faut être prêt à ce que l'api change encore.
 
 
 ## Conclusion
 
 - étonnant, non ?
 - la DX de vue/nuxt.js pour angular<!-- .element: class="fragment" -->
-- convention over configuration<!-- .element: class="fragment" -->
+- "convergence" des frameworks<!-- .element: class="fragment" -->
 - AnalogJS = Angular + Vite + Nitro<!-- .element: class="fragment" -->
 
 ---
 - Je vous encourage à tester analogjs, c'est vraiment cool.
 - la DX est grandement améliorée
 - conventions à apprendre certes, mais ça vaut le coup, derrière: efficacité et rapidité
+
+
+## Conclusion (bis)
+- Convention over configuration<!-- .element: class="fragment" -->
+- Mais explicitez vos conventions<!-- .element: class="fragment" -->
+- Les abstractions c'est bien<!-- .element: class="fragment" -->
+- c'est encore mieux quand on sait de quoi on s'abstrait<!-- .element: class="fragment" -->
 
 
 ### cas d'usage ou AnalogJS est intéressant
@@ -1078,7 +1092,6 @@ export default defineConfig(({ mode }) => ({
 ### cas d'usage ou AnalogJS est intéressant
 - pour des sites techniques (documentation, blogs)<!-- .element: class="fragment" -->
 - pour des sites à fort contenu texte peu contribuables<!-- .element: class="fragment" -->
-- pour des besoins de déploiement edge/modernes facilités<!-- .element: class="fragment" -->
 
 ---
 - grâce à markdown + mermaid et la coloration syntaxique, on peut facilement faire des sites de documentation
