@@ -1,7 +1,7 @@
 # Analogjs, le meta-framework pour angular que l'on n'attendait plus. 
 
 <div style="text-align: center">
-![](./public/analog-logo.svg)
+<img src="./public/analog-logo.svg" alt="analogjs logo" width="200" />
 </div>
 
 Les slides sont [déployés sur github-pages](https://b-legrand.github.io/analogjs-the-angular-meta-framework/).
@@ -75,4 +75,4 @@ Voyons ensemble comment tout ça fonctionne et pourquoi c'est super-ultra-méga-
 ### Diverses
 
 - Méta(prefixe) <https://fr.wikipedia.org/wiki/M%C3%A9ta_(pr%C3%A9fixe)>
-- Framework <>
+

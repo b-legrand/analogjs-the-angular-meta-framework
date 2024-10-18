@@ -14,6 +14,7 @@ The full-stack Angular meta-framework
 </div>
 ---
 - Tech Lead chez Onepoint, viendez au stand
+- Expert Angular / Typescript / Node
 - Dans une autre vie, je faisais du java.
 
 
@@ -67,6 +68,7 @@ Il exprime tout à la fois la réflexion, le changement, la succession, le fait 
 <blockquote>Méta est souvent utilisé dans le vocabulaire scientifique pour indiquer l'autoréférence (réflexion), ou pour désigner un niveau d'abstraction supérieur</blockquote>
 
 source: [wikipedia.fr](https://fr.wikipedia.org/wiki/M%C3%A9ta_(pr%C3%A9fixe))
+
 ---
 - métalanguage, métadonnées
 - Selon le contexte, le préfixe équivaut au sens de profond 
@@ -137,7 +139,7 @@ Un framework est un ensemble de composants logiciels qui sert à créer les fond
 - 📋 accès aux requêtes / réponses HTTP<!-- .element: class="fragment" -->
 - 🚏 routage "universel"<!-- .element: class="fragment" -->
 - 📂 file-based routing<!-- .element: class="fragment" -->
-- 🏋️‍♂️capacités "full-stack" (api routes)<!-- .element: class="fragment" -->
+- 🏋️‍♂️ capacités "full-stack" (api routes)<!-- .element: class="fragment" -->
 
 ---
 Maintenant qu'on est côté serveur,
@@ -152,10 +154,10 @@ Maintenant qu'on est côté serveur,
 - 🧑‍🤝‍🧑 Même code & composants entre serveur et client<!-- .element: class="fragment" -->
 - ⛵ Navigations full page et SPA.<!-- .element: class="fragment" -->
 - 💰 Bénéfices du CSR et du SSR<!-- .element: class="fragment" -->
-- 🏋️ull-stack apps<!-- .element: class="fragment" -->
+- 🏋️ full-stack apps<!-- .element: class="fragment" -->
 
 ---
-- surtout important on évite le contexte switch
+- surtout important on évite le contexte switching
 - on évite d'avoir du rendu fait serveur différent de coté client
 
 
@@ -210,7 +212,7 @@ source: [Lamis Chebbi on linkedin](https://www.linkedin.com/posts/lamis-chebbi-0
 - Pas d'opinions sur l'hébergement.
 - SSR is kinda... painful <span class="fragment">( for now )</span><span class="fragment">( but it's getting better )</span>
 ---
-- autant on peut dire qu'angular est opinioné, sur l'hébergement, pass trop
+- autant on peut dire qu'angular est opinioné, sur l'hébergement, pas trop
 - on est un peu livré à nous même
 - Donc bon, la question se pose, j'ai pas vraiment de réponse, donc j'ai envie de dire...
 
@@ -221,7 +223,6 @@ source: [Lamis Chebbi on linkedin](https://www.linkedin.com/posts/lamis-chebbi-0
 ---
 - à vous de vous faire votre avis après ce que je vais vous présenter
 - AnalogJS est un meta-framework pour Angular
-- AnalogJS est un plug-in vite
 - Qui nous apporte pas mal de fonctionnalités plutôt sympas
 
 
@@ -231,7 +232,8 @@ source: [Lamis Chebbi on linkedin](https://www.linkedin.com/posts/lamis-chebbi-0
 - \+ facilite le SSR / SSG / CSR /SPA
 ---
 - Bon ça fait beaucoup de sigles, donc avant d'attaquer les features.
-- Pourquoi c'est bien qu'on puisse faire tout ça ?
+- Et pourquoi c'est bien qu'on puisse faire tout ça ?
+- on va dire les termes comme disent les jeunes.
 
 
 
@@ -266,7 +268,7 @@ source: [Lamis Chebbi on linkedin](https://www.linkedin.com/posts/lamis-chebbi-0
 - Génération de site statique 
 - ici c'est votre pipeline de déploiement qui génère les pages
 - pas de serveur "dynamique" avec bdd et tout, juste des fichiers html
-- serveurs statiques (nginx, apache, S3 etc...)
+- permets d'avoir des serveurs "stupides" ou plus politiquement correct: statiques (nginx, apache, S3 etc...)
 - En Conclusion:
 - Analog nous permets de faire tout ca, du rendu serveur, des spa angular, de la génération de sites statiques
 
@@ -307,7 +309,7 @@ src/app/pages
 /checkout/summary
 ```
 ---
-- C'est le nommage des fichiers qui a définit nos appRoutes
+- C'est le nommage des fichiers qui a définit nos routes,
 - analogjs va lire les fichiers et les transformer en routes angular
 
 
@@ -347,6 +349,7 @@ const appRoutes: Route[] = [
 ]
 ```
 ---
+- ça c'est ce que vous auriez du écrire en angular "standard"
 - en interne, analogjs reconstruit l'arbre de routage et les chemin pour angular
 - vous n'avez plus besoin de ces définitions
 
@@ -363,16 +366,17 @@ import { Component } from '@angular/core';
 export default class HomePage {}
 ```
 ---
-- noter le export default
+- notez le export default
 - vu que vous ne déclarez plus quel composant est routé, il faut que ca soit l'export par défaut pour qu'analog fasse le lien entre fichier de page et composant
-- vous me direz : tout seul pas suffisant pour reproduire la puissance du routeur
+- vous me direz : tout seul, ce n'est pas suffisant pour reproduire toutes les possibilités du routeur angular.
+- et vous auriez raison:
 
 
 #### Page metadata
 ```ts
 export const meta: RouteMeta = {
-  // guards, canActivate, canMatch, etc...
-  // guard, resolvers, providers etc...
+  // guards: canActivate, canMatch, etc...
+  // data, resolvers, providers etc...
 }
 
 @Component({/** */})
@@ -385,14 +389,14 @@ export default class HomePage {}
 
 
 #### Pre-shot des critiques
-- Une URL, c'est déjà un chemin vers une arborescence de fichiers<!-- .element: class="fragment" -->
-- Organiser ses composants routés par url = une seule source de vérité sur l'url<!-- .element: class="fragment" -->
-- Ne veut pas dire "mettre touts nos composants dans un seul répertoire de page"<!-- .element: class="fragment" -->
+- 🌐 Une URL, c'est déjà un chemin vers une arborescence de fichiers<!-- .element: class="fragment" -->
+- 🗂️ Organiser ses composants routés par url = une seule source de vérité<!-- .element: class="fragment" -->
+- 🚚 Ne veut pas dire "mettre tous nos composants dans un seul répertoire de page"<!-- .element: class="fragment" -->
 ---
 - Organisez vous bien.
-- Ne mettez pas tout dans un seul répertoire 
-- feature-oriented architecture
-- passons à la deuxième grosse feature d'analog
+- Ne mettez pas tout dans un seul répertoire de page
+- la feature-oriented architecture, c'est bon, mangez-en
+- passons à la deuxième grosse feature d'analog:
 
 
 ### Markdown as content routes
@@ -408,7 +412,7 @@ src
 ```
 ---
 - Analog donne la possibilité de gérer son contenu en markdown.
-- pas besoin de BDD, jamstack.
+- pas besoin de BDD / "jamstack" / SSG.
 
 
 #### Front-matter
@@ -459,9 +463,9 @@ export default class ArticleComponent {
 }
 ```
 ---
-- urls vont être `/articles/[slug]` vu le nom du composant
-- front-matter récupérables en tant qu'object
-- contenu markdown de votre fichier, injecté en tant que html
+- les urls vont être `/articles/[slug]` vu le nom du composant
+- les données rédigées en front-matter sont récupérables en tant qu'object dans `attributes`
+- le contenu markdown de votre fichier, récupéré dans `content` peut ensuitre être transformé en html par le composant `analog-markdown`
 
 
 ### Mermaid support
@@ -482,8 +486,10 @@ providers: [
 
 #### Apparté sur Mermaid
 <img src="assets/mermaid-header.png" />
+
 ---
-c'est une lib javascript pour faire plein de diagrammes différent.
+- c'est une lib javascript pour faire plein de diagrammes différent.
+- diagramme as code
 
 
 ##### Flowchart
@@ -608,6 +614,7 @@ Class08 <--> C2: Cool label
 
 ## Mais comment fait-il donc ?
 <img src="assets/devfest/poulpe.png" />
+
 ---
 - Comment analogjs fait-il pour faire tout ça ?
 - accès aux fichiers, lecture, parsing, etc...
@@ -616,6 +623,7 @@ Class08 <--> C2: Cool label
 
 ### AnalogJS is a Vite plugin
 <img src="assets/integration-vite.png" />
+
 ---
 - Vite est un bundler nouvelle génération, vient du monde vue, mais est utilisable un peu partout.
 - utilise rollup et les modules natifs ESM en dessous
@@ -633,6 +641,7 @@ Class08 <--> C2: Cool label
 | svelte     | svelte-ts  |
 | solid      | solid-ts   |
 | qwik       | qwik-ts    |
+
 ---
 - vite est devenu le bundler par défaut pour les projets modernes
 - a remplacé create-react-app ? webpack pour beaucoup de projets, 
@@ -656,6 +665,7 @@ Class08 <--> C2: Cool label
 <img src="assets/schema-vite-bundle-based.svg" />
 
 source: <https://vite.dev/guide/why.html>
+
 ---
 - pourquoi vite c'est bien, et plus rapide
 - webpack ou autres outils "historiques" faisaient comme ça.
@@ -665,6 +675,7 @@ source: <https://vite.dev/guide/why.html>
 <img src="assets/schema-vite-native-esm.svg" />
 
 source: <https://vite.dev/guide/why.html>
+
 ---
 - vite lit les imports et les résouds, à la demande. ( en mode dev )
 - pas besoin de tout recompiler à chaque fois. 
@@ -692,6 +703,9 @@ export default defineConfig(({ mode }) => ({
   // ...
 }));
 ```
+---
+- quand vous générez un projet avec vite, vous avez un fichier vite.config.ts
+- dans lequel vous déclarez un plugin vite ( ici analog )
 
 
 `angular.json`
@@ -716,12 +730,14 @@ export default defineConfig(({ mode }) => ({
 ```
 ---
 - analog fournit des plugins de build pour compiler votre appli angular
-- utilise vite et le compilateur angular via le plugin
+- utilise vite et le compilateur angular via les targets de la configuration Angular
+- `ng serve` / `ng build` / `ng test` toujours utilisables
 - si vous voulez utiliser vite et vitest sans utiliser les autres features d'angular, vous pouvez.
 
 
 ### Vitest
 <img src="assets/integration-vitest.png" />
+
 ---
 - Quelques mots sur vitest.
 - vitest est un test runner basé sur vite 
@@ -767,8 +783,9 @@ statique, hébergé sur un serveur stupide genre apache, nginx, s3 ou autres
 Nitro - <https://nitro.unjs.io/>
 
 <img src="assets/integration-nitro.png" />
+
 ---
-- par les gars derrière nuxt.js, c'est ce qui s'occupee du SSR de nuxt.
+- par les gens derrière nuxt.js, c'est ce qui s'occupee du SSR de nuxt.
 - même contributeurs.
 - analogjs utilise nitro pour le serveur SSR.
 - bon, eux ils appellents ça "toolkit", mais bon 
@@ -846,6 +863,7 @@ src/server/routes
 - zeabur
 
 source: <https://nitro.unjs.io/deploy>
+
 ---
 - Selon les packages npm installés et l'environnement, nitro peut détecter sur quel cible déployer
 
@@ -999,17 +1017,19 @@ source: <https://nitro.unjs.io/deploy>
 - En vrai c'est trop bien
 
 
-### Pre-shot des critiques au SFC.
+### Pre-shot des critiques du Single File Component.
 
 - Oui mais la séparation des préoccupations ?
 - (SRP) Single Responsability Principle<!-- .element: class="fragment" -->
 
 
 <img src="assets/meme-keep-using-that-word.jpg" style="width: 50%" />
+
 ---
 - SRP: chaque fichier contient tout ce qui est nécessaire pour le composant, son style et son comportement.
 - la responsabilité de la structure, vs la responsabilité de l'apparence, vs la responsabilité du comportement
-- = c'est une seule responsabilité, celle du composant, ne découpez pas par responsabilité technique. ça mène à des abberations.
+- = c'est une seule responsabilité, celle du composant, découpez pas par responsabilité "technique", c'est pas le but.
+- surtout ça permet de la:
 
 
 ### Colocation de code
@@ -1032,6 +1052,8 @@ class MyComponent {
   name = signal('World');
 }
 ```
+---
+- Vous pouvez déjà faire du single file component en angular nativement, et c'est bon, mangez-en.
 
 
 ### Experimental !
@@ -1055,8 +1077,8 @@ export default defineConfig(({ mode }) => ({
 }));
 ```
 ---
-- à noter que c'est encore une feature expérimentale
-- faut être prêt à ce que l'api change encore.
+- à noter que ce format .analog est encore une feature expérimentale
+- il faut s'attendre à ce que l'api change encore. Ou soit encore revert ?
 
 
 ## Conclusion
@@ -1068,7 +1090,7 @@ export default defineConfig(({ mode }) => ({
 
 ---
 - Je vous encourage à tester analogjs, c'est vraiment cool.
-- la DX est grandement améliorée
+- l'expérience de développement est grandement améliorée
 - conventions à apprendre certes, mais ça vaut le coup, derrière: efficacité et rapidité
 
 
