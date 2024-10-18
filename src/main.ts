@@ -22,4 +22,5 @@ deck.initialize({
   transition: "none",
   history: true,
   pdfSeparateFragments: false,
+  showNotes: "separate-page",
 });

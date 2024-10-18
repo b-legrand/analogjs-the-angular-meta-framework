@@ -80,14 +80,6 @@ source: [wikipedia.fr](https://fr.wikipedia.org/wiki/M%C3%A9ta_(pr%C3%A9fixe))
 - donc un meta-framework, c'est un niveau d'abstraction supérieur à un framework.
 
 
-### Soyons sérieux un instant 
-<img src="assets/meta-lois-stephane.png" />
-
----
-- Si vous voulez continuez avec une autre conférence meta ensuite.
-- Je vous recommende celle sur les metas-lois de Stéphane Trebel.
-
-
 ### Mais un framework, qu'est-ce que c'est ?
 Définition
 
@@ -1139,9 +1131,5 @@ export default defineConfig(({ mode }) => ({
     </a>
     <h3>⬆️  Feedback  ⬆️</h3>
   </div>
-<div style="width: 20%">
-    <p style="font-size:18px">Easter egg pas caché<br/>"beyond the phobia":<br/> <code style="display:inline">meta-cagoule</code></p>
-    <img src="assets/devfest/oeuf.svg" style="max-width: 50%" />
-</div>
 </div>
 
