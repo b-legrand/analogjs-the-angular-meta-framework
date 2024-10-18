@@ -12,6 +12,7 @@ The full-stack Angular meta-framework
 - Tech Lead ([@onepoint](https://www.groupeonepoint.com/))
 - Angular/Typescript/Node
 </div>
+
 ---
 - Tech Lead chez Onepoint, viendez au stand
 - Expert Angular / Typescript / Node
@@ -27,6 +28,7 @@ The full-stack Angular meta-framework
 - NGRX contributor
 - Angular GDE
 </div>
+
 ---
 Auteur d'analogJS
 Contributeur ngrx
@@ -46,11 +48,13 @@ Contributeur ngrx
 
 ## Meta-framework ? qu'est-ce que c'est ?
 <img src="assets/devfest/gpt.png" />
+
 ---
 Pas la peine dedemander à ChatGPT, de toute facons, il est décédé, je vais vous expliquer.
 
 
 <img src="assets/meta-logo.png"/>
+
 ---
 - On ne parle pas de meta.
 - évidemment, 
@@ -78,6 +82,7 @@ source: [wikipedia.fr](https://fr.wikipedia.org/wiki/M%C3%A9ta_(pr%C3%A9fixe))
 
 ### Soyons sérieux un instant 
 <img src="assets/meta-lois-stephane.png" />
+
 ---
 - Si vous voulez continuez avec une autre conférence meta ensuite.
 - Je vous recommende celle sur les metas-lois de Stéphane Trebel.
